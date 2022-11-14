@@ -1,4 +1,4 @@
-const { Schema } = require("mongoose");
+const { Schema, model } = require("mongoose");
 const reactionSchema = require("./Reaction");
 
 const thoughtSchema = new Schema ({ 
@@ -23,7 +23,7 @@ reactions: [reactionSchema]
     //array of nested documents created with the reactionSchema
 })    
 
-userSchema.virtual('reactionCount').get(function () {
+thoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length;
 });
 //SCHEMA SETTINGS

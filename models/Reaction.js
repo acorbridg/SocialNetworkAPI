@@ -3,12 +3,12 @@ const { Schema } = require("mongoose")
 //SCHEMA ONLY 
 const reactionSchema = new Schema ({
 
-reactionId:{
-    type: Schema.Types.ObjectId,
-    default: new ObjectId,
-    //Use Mongoose's ObjectId data type
-    //Default value is set to a new ObjectId
-},
+// // reactionId:{
+// //     type: Schema.Types.ObjectId,
+// //     default: new ObjectId,
+// //     //Use Mongoose's ObjectId data type
+// //     //Default value is set to a new ObjectId
+// },
 reactionBody: {
     type: String,
     required: true,
