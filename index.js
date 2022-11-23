@@ -4,16 +4,13 @@ const apiRoutes = require('./routes');
 const router = express.Router();
 
 
-router.use('/api', apiRoutes);
-
-router.use((req, res) => res.send('Wrong route!'));
-
 const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(router)
+router.use('/api', apiRoutes);
+router.use((req, res) => res.send('Wrong route!'));
 
 
 
