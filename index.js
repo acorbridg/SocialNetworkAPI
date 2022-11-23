@@ -9,8 +9,8 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-router.use('/api', apiRoutes);
-router.use((req, res) => res.send('Wrong route!'));
+app.use('/api', apiRoutes);
+app.use((req, res) => res.send('Wrong route!'));
 
 
 
