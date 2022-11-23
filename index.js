@@ -1,14 +1,25 @@
-const User = require ('./models/User')
-const Thought = require ('./models/Thought')
+const express = require('express')
 const db = require ('./config/connection')
+const apiRoutes = require('./routes');
+const router = express.Router();
+
+
+router.use('/api', apiRoutes);
+
+router.use((req, res) => res.send('Wrong route!'));
+
+const PORT = process.env.PORT || 3001;
+const app = express();
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(router)
+
+
 
 db.once('open', () => {
-    // User.create({username: "acor", email: "acor@email.com"})
-    // .then((user) => console.log(user))
-    // .catch((err) => console.log(err));
-
-    Thought.create({ thoughtText: "I am doing great, thanks for asking", reactions: [{reactionBody: "ah, very interesting", username: "Jarrod"}]})
-    .then((thought) => console.log(thought))
-    .catch((err) => console.log(err));
+   app.listen(PORT, () => {
+    console.log(`API server running on port ${PORT}!`);
   });
+});
   
