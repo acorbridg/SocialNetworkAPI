@@ -10,7 +10,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/api', apiRoutes);
-app.use((req, res) => res.send('Wrong route!'));
+app.use("*", (req, res) => res.send('Wrong route!'));
 
 
 
